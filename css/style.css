@@ -22,12 +22,11 @@ header {
   left: 0;
   width: 100%; /* Asegura que ocupe todo el ancho */
   z-index: 1000;
-  background: linear-gradient(90deg, #aed8e6, #a8d5ba);
-  background-color: #aed8e6;
+  background: linear-gradient(90deg, #ffffff, #dcdea3);
+  background-color: #c1ae38;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #ddd;
 }
-
 
 header a {
   color: #333;
@@ -36,13 +35,12 @@ header a {
 }
 
 header a:hover {
-  color: #8b5a57; /* Cambia el color al pasar el cursor */
+  color: #eae28b; /* Cambia el color al pasar el cursor */
 }
-
 
 header h1 {
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
 }
 
@@ -53,7 +51,7 @@ header h1 {
 }
 
 .logo img {
-  max-height: 50px;
+  max-height: 80px;
 }
 
 .menu-toggle {
@@ -115,7 +113,7 @@ header h1 {
     top: 60px;
     left: 0;
     width: 100%;
-    background-color: #aed8e6;
+    background-color: #f2f4f5;
     padding: 10px;
   }
 
@@ -139,7 +137,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #ebd983;
+  background-color: #c9b138;
   color: rgb(63, 69, 67);
 }
 
@@ -201,42 +199,49 @@ nav ul li a {
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-
-  nav ul li a {
+  .menu-icon {
     display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #aed8e6;
-    text-align: left;
   }
 
-  nav ul li a:hover {
-    background-color: #aed8e6;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #ffffff, #dcdea3);
+    background-color: #c1ae38;
+    padding: 10px;
+  }
+
+  .menu-toggle:checked + .menu-icon + .nav-links {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-bottom: 10px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
   }
 }
 
+
+
 /*Footer */
 .footer {
-  background-color: #333;
+  background-color: #666240;
   color: #fff;
   padding: 20px 0;
   text-align: center;
   bottom: 0;
   width: 100%;
+  margin-top: 50px; /* Aumenta este valor según lo necesites */
 }
+
 
 .footer-content {
   max-width: 1200px;
@@ -260,37 +265,6 @@ nav ul li a {
 }
 
 /*Profile */
-.profile-container {
-  display: flex;
-  align-items: stretch; /* Ambos elementos tendrán la misma altura */
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px; /* Si no quieres padding, puedes quitarlo */
-}
-
-.profile-image {
-  flex: 1; /* La imagen y el texto ocupan el mismo espacio horizontal */
-  display: flex;
-  align-items: stretch; /* Asegura que la imagen se estire verticalmente */
-}
-
-.profile-image img {
-  width: 100%; /* Asegura que la imagen se ajuste horizontalmente */
-  height: 100%; /* Hace que la imagen ocupe toda la altura disponible */
-  object-fit: cover; /* Ajusta la imagen sin deformarla */
-  border-radius: 0; /* Elimina bordes redondeados si los hay */
-}
-
-.profile-text {
-  flex: 1; /* Ambos elementos ocupan el mismo espacio horizontal */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centra verticalmente el texto */
-  margin-left: 20px; /* Ajusta el margen según tu diseño */
-}
-
-/* Define la animación */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -300,18 +274,36 @@ nav ul li a {
   }
 }
 
-/* Aplica la animación a la imagen */
+.profile-container {
+
+  align-items: stretch; /* Asegura que ambos elementos tengan la misma altura */
+  width: 100%; /* Ocupar todo el ancho de la pantalla */
+  margin: 0 auto;
+  background-color: transparent; /* Quita el fondo */
+  border: none; /* Quita el borde */
+  box-shadow: none; /* Quita cualquier sombra */
+}
+
+.profile-image {
+  flex: 3; /* La imagen ocupará el 50% del contenedor */
+  
+}
+
 .profile-image img {
+  width: 100%;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  object-fit: cover; /* Ajusta la imagen sin deformarla */
   animation: fadeIn 1s ease-in-out;
   opacity: 0; /* Asegura que inicie invisible */
   animation-fill-mode: forwards; /* Mantiene el estado final de la animación */
 }
 
-/* Elimina el fondo y el borde */
-.profile-container {
-  background-color: transparent; /* Quita el fondo */
-  border: none; /* Quita el borde */
-  box-shadow: none; /* Quita cualquier sombra */
+.profile-text {
+  flex: 3; /* El texto ocupará el 50% del contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el texto verticalmente */
+  padding: 20px; /* Agrega espacio alrededor del texto */
 }
 
 .profile-text h1 {
@@ -325,6 +317,8 @@ nav ul li a {
   color: #555;
   margin-bottom: 10px;
 }
+
+
 
 /*Cards index*/
 .card-container {
@@ -368,7 +362,7 @@ nav ul li a {
 /*containerhablamos*/
 .containerhablamos {
   text-align: center;
-  background-color: #efccdb;
+  background-color: #c9c6e2;
   padding: 15px;
 }
 
@@ -435,13 +429,14 @@ h3 {
   margin-bottom: 20px;
 }
 
-.btn {
-  .btn,
-  .contact-btn {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-  }
+
+.contact-btn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-top: 20px; /* Ajusta el valor según la distancia que necesites */
+  display: inline-block; /* Asegúrate de que respete los márgenes */
 }
+
 
 .btn:hover {
   background-color: #88a9ff;
@@ -456,6 +451,7 @@ h3 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
   width: 100%;
+  
 }
 
 .contact-image {
@@ -466,6 +462,7 @@ h3 {
   text-align: center;
   padding-right: 20px;
   border-right: 2px solid #ddd;
+  
 }
 
 .contact-image img {
@@ -473,39 +470,44 @@ h3 {
   height: 150px;
   border-radius: 50%;
   margin-bottom: 15px;
+  
 }
 
 .contact-info h3 {
   margin: 10px 0;
   font-size: 20px;
   color: #333;
+  
 }
 
 .contact-info p {
   margin: 5px 0;
   color: #666;
   font-size: 14px;
+   margin-top: 20px;
 }
 
 .contact-btn {
-  background-color: #ff8a65;
+  background-color: #aa9347;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
+  margin-top: 20px;
+  
 }
 
 .contact-btn:hover {
   background-color: #ff7043;
+  
 }
 
 .social-icons {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 20px
 }
 
 .social-icons a {
@@ -520,6 +522,7 @@ h3 {
 .contact-form {
   flex: 2;
   padding-left: 20px;
+  
 }
 
 .contact-form h2 {
@@ -557,6 +560,7 @@ h3 {
   border-radius: 5px;
   box-sizing: border-box;
   background-color: #f9f9f9;
+  
 }
 
 .submit-btn {
@@ -576,7 +580,7 @@ h3 {
 /*Sobre mi*/
 /* Asegura que el carrusel no se superponga */
 .carousel {
-  margin-top: 60px; /* Ajusta este valor según la altura de tu header */
+  margin-top: 100px; /* Ajusta este valor según la altura de tu header */
   position: relative;
   z-index: 1; /* Deja el carrusel detrás del header si es necesario */
 }
@@ -698,7 +702,7 @@ h3 {
   align-items: flex-start;
   justify-content: space-between;
   padding: 40px;
-  background-color: #fde3d9; /* Fondo color melocotón claro */
+  background-color: #dbd9a5; /* Fondo color melocotón claro */
 }
 
 .benefits-content {
@@ -781,7 +785,6 @@ h3 {
   color: #333;
   padding: 20px;
   border-radius: 10px;
-  
 }
 
 .fase {
@@ -791,7 +794,7 @@ h3 {
   text-align: center;
   background: #ffffff;
   transition: transform 0.3s ease;
-  margin-top: 80px;
+  margin-bottom: 30px;
 }
 .fase:hover {
   transform: scale(1.05);
@@ -901,21 +904,6 @@ h3 {
     margin: 5px 0;
   }
 
-  /* Perfil: cambio de diseño */
-  .profile-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .profile-image img {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-
-  .profile-text {
-    margin: 0;
-  }
 
   /* Tarjetas */
   .card-container {
@@ -938,6 +926,7 @@ h3 {
   .contact-container {
     flex-direction: column;
     text-align: center;
+    
   }
 
   .contact-image {
@@ -969,6 +958,7 @@ h3 {
   .btn {
     font-size: 14px;
     padding: 8px 15px;
+    margin-top: 20px;
   }
 
   .whatsapp-fixed-container {
@@ -995,12 +985,12 @@ button,
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease; /* Transición suave */
+  
 }
 
 /* Efecto hover */
 button:hover,
 .btn:hover {
-  background-color: #45a049; /* Color más oscuro */
   transform: scale(1.05); /* Aumenta ligeramente el tamaño */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
 }
@@ -1169,6 +1159,7 @@ main button:hover {
   main button {
     font-size: 14px;
     padding: 8px 16px;
+    
   }
 }
 
@@ -1278,7 +1269,7 @@ main button:hover {
 /* Botón regresar */
 .btn {
   margin-top: 20px;
-  background-color: #ff8a65;
+  background-color: #c4bf7b;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -1286,6 +1277,7 @@ main button:hover {
   cursor: pointer;
   text-decoration: none;
   font-size: 16px;
+  
 }
 
 .btn:hover {
@@ -1323,7 +1315,7 @@ main button:hover {
 .journaling-content .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   text-align: center;
   text-decoration: none;
